@@ -19,13 +19,26 @@ const Quiz = () => {
       `https://quizapi.io/api/v1/questions?apiKey=QZVXFNuqJYR6x8DGAM2JDc2vIIiQUjOWIujIBFRh&&limit=10&&category=${category}&&difficulty=${difficulty}`
     );
     setMyData(res.data)
+    console.log("aef");
   }
   
   useEffect(() => {
     getApiData();
-  }, [1]);
-
-  console.log(myData);
+    console.log("sgvew");
+  }, []);
+  // var requestOptions = {
+  //   method: 'GET',
+  //   redirect: 'follow'
+  // };
+  
+  // fetch(`https://quizapi.io/api/v1/questions?apiKey=QZVXFNuqJYR6x8DGAM2JDc2vIIiQUjOWIujIBFRh&&limit=10&&category=${category}&&difficulty=${difficulty}`, requestOptions)
+  //   .then(response => response.text())
+  //   .then(result => {console.log(result);
+  //     setMyData(result)})
+  //   .catch(error => console.log('error', error));
+  
+  // setMyData(result)
+  // console.log(myData);
 
   const handleNext = (e)=>{
     e.preventDefault();
@@ -36,9 +49,10 @@ const Quiz = () => {
     setIndex(index-1)
   }
   const handleClick = (button) =>{
-    if (button === myData[index].correct_answer) {
-      setScore(score+1)
-    }
+    console.log(button);
+    // if (button === myData[index].correct_answer) {
+    //   setScore(score+1)
+    // }
   }
   // axios.get(url)  
   //     .then(res => {  
@@ -83,7 +97,7 @@ const Quiz = () => {
             myData[index].answers.answer_a ? (
               <button
               className={selected==="answer_a"?("singleOption selected"):("singleOption")}
-              // onClick = {handleClick("answer_a")}
+              onClick = {handleClick("answer_a")}
               >
                 {myData[index].answers.answer_a}
               </button>
